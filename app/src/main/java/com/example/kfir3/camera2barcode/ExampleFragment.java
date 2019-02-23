@@ -64,7 +64,7 @@ public class ExampleFragment extends Fragment {
     private void createDetector() {
         BarcodeDetector detector =
                 new BarcodeDetector.Builder(getContext())
-                        .setBarcodeFormats(Barcode.DATA_MATRIX | Barcode.QR_CODE)
+                        .setBarcodeFormats(Barcode.PDF417)
                         .build();
 
         if (detector.isOperational()) {
@@ -79,7 +79,7 @@ public class ExampleFragment extends Fragment {
                     final SparseArray<Barcode> barcodes = detections.getDetectedItems();
                     if (barcodes.size() > 0) {
                         Log.i(TAG,barcodes.size() + " barcodes detected!");
-                        etBarCode.setText(barcodes.valueAt(0).displayValue);
+                        etBarCode.setText(barcodes.valueAt(0).rawValue);
                     }
                 }
             });
